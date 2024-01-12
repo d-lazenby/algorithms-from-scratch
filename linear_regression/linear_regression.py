@@ -13,7 +13,7 @@ class LinearRegression:
 
     def fit(self, inputs, target):
         # init params
-        n_rows, n_features = inputs.shape
+        n_features = inputs.shape[1]
         # Initialize from zero
         self.theta1 = np.zeros(n_features)
         self.theta0 = 0
@@ -21,8 +21,8 @@ class LinearRegression:
         for _ in range(self.n_iter):
             y_hat = np.dot(inputs, self.theta1) + self.theta0
 
-            d_theta1 = (1 / n_rows) * np.dot(inputs.T, (y_hat - target))
-            d_theta0 = (1 / n_rows) * np.sum(y_hat - target)
+            d_theta1 = np.dot(inputs.T, (y_hat - target))
+            d_theta0 = np.sum(y_hat - target)
 
             self.theta1 -= self.lr * d_theta1
             self.theta0 -= self.lr * d_theta0
