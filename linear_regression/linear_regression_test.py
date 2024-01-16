@@ -11,7 +11,7 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=32)
     
     # Train model
-    model = LinearRegression(lr=0.01, n_iter=1000)
+    model = LinearRegression(lr=0.01, n_iter=10)
     model.fit(X_train, y_train)
     
     # Performance

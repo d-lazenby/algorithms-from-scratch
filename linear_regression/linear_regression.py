@@ -15,8 +15,8 @@ class LinearRegression:
         # init params
         n_features = inputs.shape[1]
         # Initialize from zero
-        self.theta1 = np.zeros(n_features)
-        self.theta0 = 0
+        self.theta1 = np.zeros(n_features) * 10 ** -5
+        self.theta0 = 10 ** -5
 
         for _ in range(self.n_iter):
             y_hat = np.dot(inputs, self.theta1) + self.theta0
