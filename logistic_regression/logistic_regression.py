@@ -3,7 +3,7 @@ import numpy as np
 
 class LogisticRegression:
     """
-    Perform logistic regression using y_hat = 1 / (1 + exp(-(theta0 + theta1*X)))
+    Perform logistic regression using y_hat = 1 / (1 + exp(-(theta0 + theta^T*X)))
     """
 
     def __init__(self, lr=0.001, n_iter=1000):
