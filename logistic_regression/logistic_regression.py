@@ -3,36 +3,38 @@ import numpy as np
 
 class LogisticRegression:
     """
-    Perform logistic regression using y_hat = 1 / (1 + exp(-(theta0 + theta^T*X)))
+    Perform logistic regression using h = 1 / (1 + exp(-theta^T*X)) with
+    theta^Tx = theta_0 + sum_j theta_j * x_j (j = 1, ..., n_features)
     """
 
     def __init__(self, lr=0.001, n_iter=1000):
         self.lr = lr
         self.n_iter = n_iter
-        self.theta1 = None
+        self.threshold = 0.5
+        self.theta_j = None
         self.theta0 = None
 
     def fit(self, inputs, target):
         # init params
         n_features = inputs.shape[1]
         # Initialize from zero
-        self.theta1 = np.zeros(n_features)
+        self.theta_j = np.zeros(n_features)
         self.theta0 = 0
 
         for _ in range(self.n_iter):
-            thetaX = np.dot(inputs, self.theta1) + self.theta0
-            y_hat = sigmoid(thetaX)
+            thetaX = np.dot(inputs, self.theta_j) + self.theta0
+            h = sigmoid(thetaX)
 
-            d_theta1 = np.dot(inputs.T, (y_hat - target))
-            d_theta0 = np.sum(y_hat - target)
+            d_theta_j = np.dot(inputs.T, (h - target))
+            d_theta0 = np.sum(h - target)
 
-            self.theta1 -= self.lr * d_theta1
+            self.theta_j -= self.lr * d_theta_j
             self.theta0 -= self.lr * d_theta0
 
     def predict(self, inputs):
-        thetaX = np.dot(inputs, self.theta1) + self.theta0
+        thetaX = np.dot(inputs, self.theta_j) + self.theta0
         predictions = sigmoid(thetaX)
-        predictions = np.where(predictions >= 0.5, 1, 0)
+        predictions = np.where(predictions >= self.threshold, 1, 0)
         return predictions
 
 

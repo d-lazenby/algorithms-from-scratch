@@ -6,7 +6,7 @@ Given we know that $y\in\{0,1\}$ it makes sense to modify our hypothesis to refl
 $$
 g(z) = \frac{1}{1-\mathrm{e}^{-z}}.
 $$
-The form of our hypothesis $h$, parameterised by a $\theta$, is now 
+The form of our hypothesis $h$, parameterised by $\theta$, is now 
 $$
 h_\theta(x) = g(\theta^Tx) = \frac{1}{1-\mathrm{e}^{-\theta^Tx}},
 $$
@@ -34,3 +34,6 @@ leading to the stochastic gradient ascent (*ascent* because we want to maximise 
 $$
 \theta_j := \theta_j + \alpha (y^{(i)} - h_\theta(x^{(i)}))x_j^{(i)}.
 $$
+
+## Testing
+Cancer dataset data split: (array([0, 1]), array([212, 357]))
