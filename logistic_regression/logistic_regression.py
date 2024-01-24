@@ -25,11 +25,11 @@ class LogisticRegression:
             thetaX = np.dot(inputs, self.theta_j) + self.theta0
             h = sigmoid(thetaX)
 
-            d_theta_j = np.dot(inputs.T, (h - target))
+            d_theta_j = np.dot(inputs.T, (target - h))
             d_theta0 = np.sum(h - target)
 
-            self.theta_j -= self.lr * d_theta_j
-            self.theta0 -= self.lr * d_theta0
+            self.theta_j += self.lr * d_theta_j
+            self.theta0 += self.lr * d_theta0
 
     def predict(self, inputs):
         thetaX = np.dot(inputs, self.theta_j) + self.theta0

@@ -36,4 +36,6 @@ $$
 $$
 
 ## Testing
-To test the algorithm, we can use a toy dataset built from the scikit-learn library that consists of 500 data points representing two features and two classes. This is split into training and test sets and fed into the algorithm to obtain a decision boundary. This recovered 
+To test the algorithm, we can use a toy dataset built from the scikit-learn library that consists of 500 data points representing two features and two classes. The classes were chosen such that there was some overlap so that it wasn't too easy a task for the algorithm. This is split into training and test sets and fed into the algorithm to obtain a decision boundary. This recovered the decision boundary illustrated below with an accuracy of 92% recorded on the test set.
+
+![Results](results.png)
